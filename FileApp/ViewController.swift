@@ -56,15 +56,15 @@ class ViewController: UIViewController {
               
                 // MARK: Better to check if you can save video, and if not - show Alert. Also you have to remember to use .relativePath of url.
                 if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(destinationUrl.relativePath) {
-//                    UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath, nil, nil, nil)
+                    UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath, nil, nil, nil)
                     
                     // Second and third params are selector to methods, which can be called after or with UISaveVideoAtPathToSavedPhotosAlbum method.
                   
                     // To try it, just uncomment this call, and comment previous call
-                    UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath,
-                                                        self, // target for selector below
-                                                        #selector(video(videoPath:didFinishSavingWithError:contextInfo:)), // method which call after video was written
-                                                        nil)
+//                    UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath,
+//                                                        self, // target for selector below
+//                                                        #selector(video(videoPath:didFinishSavingWithError:contextInfo:)), // method which call after video was written
+//                                                        nil)
                     
                    // BUT REMEMBER: If you use methods within selector, you should add @objc before keyword 'func' (see stub1/handlevideo implementation)
                     

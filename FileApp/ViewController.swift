@@ -112,7 +112,7 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
         if let tempData = downloadedData {
             completion(tempData, nil)
         }
-        
+        // Major changes
 //        debugPrint((response as! HTTPURLResponse).statusCode)
         
     }.resume()

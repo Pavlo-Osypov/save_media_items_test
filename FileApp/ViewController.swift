@@ -113,8 +113,8 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
             completion(tempData, nil)
         }
         
-//        debugPrint((response as! HTTPURLResponse).statusCode)
-        
+        debugPrint((response as! HTTPURLResponse).statusCode)
+        // This will be first change
     }.resume()
     
     

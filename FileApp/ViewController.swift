@@ -118,5 +118,6 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
     }.resume()
     
     // Changes wich need to delete.
+    // But we added some
     
 }

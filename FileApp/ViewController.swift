@@ -105,10 +105,6 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
     
     let task = session.dataTask(with: URL(string: url)!) { (downloadedData, response, error) in
         
-        if let err = error {
-            completion(nil, err)
-        }
-        
         if let tempData = downloadedData {
             completion(tempData, nil)
         }
@@ -116,5 +112,7 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
         debugPrint((response as! HTTPURLResponse).statusCode)
         
     }.resume()
-        
+    
+    // Deleted
+
 }

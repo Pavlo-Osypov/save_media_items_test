@@ -115,6 +115,8 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
         
         debugPrint((response as! HTTPURLResponse).statusCode)
         // This will be first change
+        
+        // This will be a second changes
     }.resume()
     
     

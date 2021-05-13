@@ -118,6 +118,8 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
         
         // 1
         
+        // 2
+        
         
     }.resume()
     

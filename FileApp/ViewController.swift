@@ -11,7 +11,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func doSomething(_ sender: UIButton) {
@@ -35,7 +34,6 @@ class ViewController: UIViewController {
     
     func downloadImage(){
         downloadFunc(url: "https://sample-videos.com/img/Sample-jpg-image-50kb.jpg", completion: {data, error in
-            print(String(describing: data))
             if data != nil {
                 self.saveToGallery(data!, asVideo: false)
             }
@@ -48,7 +46,7 @@ class ViewController: UIViewController {
             
             // MARK: Define URL path`s to the file. You can change directory (see arguments for parameter "for:")
             let docsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let destinationUrl = docsUrl.appendingPathComponent("myHomePronVideo.mp4") // Better change appended components ;-)
+            let destinationUrl = docsUrl.appendingPathComponent("savedVideo.mp4") // Better change appended components ;-)
             
             do {
                 // MARK: You can learn about options of writing data more, if you need.
@@ -57,10 +55,9 @@ class ViewController: UIViewController {
                 // MARK: Better to check if you can save video, and if not - show Alert. Also you have to remember to use .relativePath of url.
                 if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(destinationUrl.relativePath) {
                     UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath, nil, nil, nil)
-                    
                     // Second and third params are selector to methods, which can be called after or with UISaveVideoAtPathToSavedPhotosAlbum method.
                   
-                    // To try it, just uncomment this call, and comment previous call
+                    //MARK: To try it, just uncomment this call, and comment previous call
 //                    UISaveVideoAtPathToSavedPhotosAlbum(destinationUrl.relativePath,
 //                                                        self, // target for selector below
 //                                                        #selector(video(videoPath:didFinishSavingWithError:contextInfo:)), // method which call after video was written
@@ -88,17 +85,14 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func stub1(){
-        debugPrint("STUB METHOD")
-    }
-    
     @objc func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo: UnsafeMutableRawPointer){
-        // Do something with all this shit
+        // Do something with error
         debugPrint(videoPath, error, contextInfo)
     }
     
 }
 
+// TODO: Remake it for network/API/downloader protocol
 func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {_,_ in}) {
         
     let session = URLSession(configuration: .default)
@@ -112,7 +106,4 @@ func downloadFunc(url: String, completion: (@escaping (Data?, Error?) -> ()) = {
         debugPrint((response as! HTTPURLResponse).statusCode)
         
     }.resume()
-    
-    // Deleted
-
 }
